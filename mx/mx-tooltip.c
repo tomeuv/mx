@@ -498,6 +498,29 @@ mx_tooltip_finalize (GObject *object)
   G_OBJECT_CLASS (mx_tooltip_parent_class)->finalize (object);
 }
 
+static gboolean
+mx_tooltip_get_paint_volume (ClutterActor       *actor,
+                             ClutterPaintVolume *volume)
+{
+  gboolean result;
+  ClutterVertex vertex;
+  gfloat abs_x, abs_y;
+  ClutterActor *parent;
+
+  parent = clutter_actor_get_parent (actor);
+
+  result = clutter_paint_volume_set_from_allocation (volume, actor);
+
+  clutter_actor_get_transformed_position (parent, &abs_x, &abs_y);
+
+  vertex.x = -abs_x;
+  vertex.y = -abs_y;
+
+  clutter_paint_volume_set_origin (volume, &vertex);
+
+  return TRUE;
+}
+
 static void
 mx_tooltip_class_init (MxTooltipClass *klass)
 {
@@ -518,6 +541,7 @@ mx_tooltip_class_init (MxTooltipClass *klass)
   actor_class->allocate = mx_tooltip_allocate;
   actor_class->map = mx_tooltip_map;
   actor_class->unmap = mx_tooltip_unmap;
+  actor_class->get_paint_volume = mx_tooltip_get_paint_volume;
 
   floating_class->floating_paint = mx_tooltip_paint;
 
