@@ -433,8 +433,7 @@ mx_action_class_init (MxActionClass *klass)
                                                        "The type of GVariant "
                                                        "passed to activate()",
                                                        G_TYPE_VARIANT_TYPE,
-                                                       G_PARAM_READWRITE |
-                                                       G_PARAM_CONSTRUCT_ONLY |
+                                                       G_PARAM_READABLE |
                                                        G_PARAM_STATIC_STRINGS));
 
   /**
@@ -454,8 +453,7 @@ mx_action_class_init (MxActionClass *klass)
                                                          "If the action can be "
                                                          "activated",
                                                          TRUE,
-                                                         G_PARAM_CONSTRUCT |
-                                                         G_PARAM_READWRITE |
+                                                         G_PARAM_READABLE |
                                                          G_PARAM_STATIC_STRINGS));
 
   /**
@@ -491,8 +489,7 @@ mx_action_class_init (MxActionClass *klass)
                                                          "is in",
                                                          G_VARIANT_TYPE_ANY,
                                                          NULL,
-                                                         G_PARAM_CONSTRUCT |
-                                                         G_PARAM_READWRITE |
+                                                         G_PARAM_READABLE |
                                                          G_PARAM_STATIC_STRINGS));
 
   /**
