@@ -556,8 +556,6 @@ main (int argc, char **argv)
                                       "row-span", 2, NULL);
   clutter_actor_set_height (data.scroll, 300);
 
-  mx_window_set_child (window, data.table);
-
   /* toolbar */
   box = mx_box_layout_new ();
   mx_box_layout_add_actor_with_properties (MX_BOX_LAYOUT (box),
@@ -572,6 +570,7 @@ main (int argc, char **argv)
   mx_bin_set_child (MX_BIN (toolbar), box);
   mx_bin_set_fill (MX_BIN (toolbar), TRUE, TRUE);
 
+  mx_window_set_child (window, data.table);
 
   /* show the window */
   mx_window_show (window);

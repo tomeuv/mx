@@ -1096,6 +1096,8 @@ mx_table_calculate_row_heights (MxTable *table,
       start_row = meta->row;
       end_row = meta->row + meta->row_span - 1;
 
+      g_assert (end_row < priv->n_rows);
+
       clutter_actor_get_preferred_height (child, columns[meta->col].final_size,
                                          &c_min, &c_pref);
 
